@@ -1,0 +1,194 @@
+# Openboxdevs- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Box Devices | Wholesale Smart Home Tech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root { --primary: #0a2540; --accent: #fbc02d; }
+        .quote-badge { position: fixed; bottom: 20px; right: 20px; background: var(--accent); padding: 15px 25px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 100; font-weight: bold; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="logo.png" alt="Open Box Devices Logo" class="h-12">
+                <span class="font-bold text-xl tracking-tight uppercase">Open Box Devices</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-semibold">
+                <a href="#" onclick="showPage('home')" class="hover:text-yellow-600">Home</a>
+                <a href="#" onclick="showPage('products')" class="hover:text-yellow-600">Products</a>
+                <a href="#" onclick="showPage('inquiry')" class="hover:text-yellow-600">Inquiry</a>
+                <a href="#" onclick="showPage('contact')" class="hover:text-yellow-600">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="page-content">
+        <div class="bg-slate-900 text-white py-24 px-6 text-center">
+            <h1 class="text-5xl font-bold mb-4">Wholesale Smart Home Solutions</h1>
+            <p class="text-xl mb-8 opacity-90">Premium Open Box & New Devices for Professional Installers.</p>
+            <button onclick="showPage('products')" class="bg-yellow-500 text-slate-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-400 transition">View Inventory</button>
+        </div>
+        <div class="container mx-auto py-16 px-6 grid md:grid-cols-3 gap-8">
+            <div class="p-6 bg-white rounded shadow-sm text-center">
+                <i class="fa fa-box-open text-4xl text-yellow-500 mb-4"></i>
+                <h3 class="text-xl font-bold">Bulk Inventory</h3>
+                <p class="text-gray-600">Consistent supply of high-demand smart home products.</p>
+            </div>
+            <div class="p-6 bg-white rounded shadow-sm text-center">
+                <i class="fa fa-truck text-4xl text-yellow-500 mb-4"></i>
+                <h3 class="text-xl font-bold">Fast Fulfillment</h3>
+                <p class="text-gray-600">Quotes returned in 24 hours, shipping within 48.</p>
+            </div>
+            <div class="p-6 bg-white rounded shadow-sm text-center">
+                <i class="fa fa-check-circle text-4xl text-yellow-500 mb-4"></i>
+                <h3 class="text-xl font-bold">Quality Guaranteed</h3>
+                <p class="text-gray-600">Every device inspected for professional standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="page-content hidden py-16 container mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12 text-center">Smart Home Wholesale Inventory</h2>
+        <div class="grid md:grid-cols-3 gap-8" id="product-grid">
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                <img src="https://homematetech.com/wp-content/uploads/2021/08/Smart-Door-Lock-1.jpg" class="h-48 w-full object-contain mb-4">
+                <h3 class="text-xl font-bold mb-2">Smart WiFi Door Lock</h3>
+                <p class="text-sm text-gray-500 mb-4">Biometric, App & Key access. Professional Grade.</p>
+                <button onclick="addToQuote('Smart WiFi Door Lock')" class="mt-auto bg-slate-900 text-white py-2 rounded hover:bg-slate-700">Add to Quote List</button>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                <img src="https://homematetech.com/wp-content/uploads/2021/04/Smart-Wi-Fi-Touch-Switch-1.jpg" class="h-48 w-full object-contain mb-4">
+                <h3 class="text-xl font-bold mb-2">Smart Wi-Fi Touch Switch</h3>
+                <p class="text-sm text-gray-500 mb-4">Glass finish, voice control compatible with Alexa/Google.</p>
+                <button onclick="addToQuote('Smart Wi-Fi Touch Switch')" class="mt-auto bg-slate-900 text-white py-2 rounded hover:bg-slate-700">Add to Quote List</button>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                <img src="https://homematetech.com/wp-content/uploads/2021/04/Smart-Wi-Fi-Fan-Regulator.jpg" class="h-48 w-full object-contain mb-4">
+                <h3 class="text-xl font-bold mb-2">Smart Fan Regulator</h3>
+                <p class="text-sm text-gray-500 mb-4">Retrofit design for seamless ceiling fan automation.</p>
+                <button onclick="addToQuote('Smart Fan Regulator')" class="mt-auto bg-slate-900 text-white py-2 rounded hover:bg-slate-700">Add to Quote List</button>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                <img src="https://homematetech.com/wp-content/uploads/2021/04/Smart-Wi-Fi-Plug-16A.jpg" class="h-48 w-full object-contain mb-4">
+                <h3 class="text-xl font-bold mb-2">Smart 16A Power Plug</h3>
+                <p class="text-sm text-gray-500 mb-4">Heavy duty for appliances. Includes energy monitoring.</p>
+                <button onclick="addToQuote('Smart 16A Power Plug')" class="mt-auto bg-slate-900 text-white py-2 rounded hover:bg-slate-700">Add to Quote List</button>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex flex-col">
+                <img src="https://homematetech.com/wp-content/uploads/2021/04/Smart-Wi-Fi-Universal-Remote.jpg" class="h-48 w-full object-contain mb-4">
+                <h3 class="text-xl font-bold mb-2">Smart Universal Remote (IR)</h3>
+                <p class="text-sm text-gray-500 mb-4">Control TV, AC, and Media from a single mobile app.</p>
+                <button onclick="addToQuote('Smart Universal Remote')" class="mt-auto bg-slate-900 text-white py-2 rounded hover:bg-slate-700">Add to Quote List</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="inquiry" class="page-content hidden py-16 container mx-auto px-6 max-w-2xl">
+        <div class="bg-white p-8 rounded-xl shadow-xl">
+            <h2 class="text-3xl font-bold mb-6 text-center">Request a Wholesale Quote</h2>
+            <p class="text-center text-gray-600 mb-8">Fill out the details below and our team will contact you within 24 hours.</p>
+            
+            <form action="https://formspree.io/f/openboxdevices@gmail.com" method="POST" class="space-y-4">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <input type="text" name="Name" placeholder="Full Name" required class="w-full p-3 border rounded">
+                    <input type="text" name="Business_Name" placeholder="Business Name" required class="w-full p-3 border rounded">
+                </div>
+                <input type="email" name="email" placeholder="Email Address" required class="w-full p-3 border rounded">
+                
+                <hr class="my-4">
+                
+                <label class="font-bold">Requested Products:</label>
+                <textarea id="quote-list-input" name="Product_List" rows="3" class="w-full p-3 border rounded bg-gray-50" readonly></textarea>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs font-bold text-gray-500">QUANTITY NEEDED</label>
+                        <input type="number" name="Quantity" placeholder="e.g. 50" class="w-full p-3 border rounded">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-500">SHIPPING ZIP CODE</label>
+                        <input type="text" name="Zip_Code" placeholder="12345" class="w-full p-3 border rounded">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-xs font-bold text-gray-500">TIMELINE</label>
+                    <select name="Timeline" class="w-full p-3 border rounded">
+                        <option>ASAP</option>
+                        <option>1-2 Weeks</option>
+                        <option>1 Month</option>
+                        <option>Just Pricing for now</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full bg-yellow-500 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400">Submit Quote Request</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="contact" class="page-content hidden py-16 container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold mb-12">Contact Us</h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <div class="bg-white p-10 rounded shadow-lg">
+                <i class="fa fa-envelope text-4xl text-yellow-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Email</h3>
+                <p class="text-xl">openboxdevices@gmail.com</p>
+            </div>
+            <div class="bg-white p-10 rounded shadow-lg">
+                <i class="fa fa-phone text-4xl text-yellow-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-2">Phone</h3>
+                <p class="text-xl">484-995-1857</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="quote-badge" class="quote-badge hidden" onclick="showPage('inquiry')">
+        <i class="fa fa-list-ul mr-2"></i> Quote List (<span id="cart-count">0</span>)
+    </div>
+
+    <footer class="bg-slate-900 text-white py-12 mt-20">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Open Box Devices. All Rights Reserved.</p>
+            <p class="mt-2 opacity-50">Wholesale Smart Home Technology Distribution</p>
+        </div>
+    </footer>
+
+    <script>
+        let quoteItems = [];
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function addToQuote(productName) {
+            if(!quoteItems.includes(productName)) {
+                quoteItems.push(productName);
+                updateQuoteUI();
+            }
+            alert(productName + " added to your inquiry list.");
+        }
+
+        function updateQuoteUI() {
+            const badge = document.getElementById('quote-badge');
+            const count = document.getElementById('cart-count');
+            const input = document.getElementById('quote-list-input');
+            
+            if(quoteItems.length > 0) {
+                badge.classList.remove('hidden');
+                count.innerText = quoteItems.length;
+                input.value = quoteItems.join(", ");
+            }
+        }
+    </script>
+</body>
+</html>
