@@ -12,137 +12,138 @@
         .hidden { display: none; }
         .nav-link { cursor: pointer; transition: all 0.3s; }
         .nav-link:hover { color: var(--accent); }
+        .product-card img { transition: transform 0.5s ease; }
+        .product-card:hover img { transform: scale(1.03); }
+        .page-content { animation: fadeIn 0.4s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="bg-gray-50 text-[#0a2540] font-sans">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="showPage('home')">
-                <img src="logo.png" alt="OBD Logo" class="h-10">
-                <span class="font-bold text-xl tracking-tight uppercase">Open Box Devices</span>
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4 cursor-pointer" onclick="showPage('home')">
+                <img src="logo.png" alt="Open Box Devices Logo" class="h-14">
+                <div class="flex flex-col">
+                    <span class="font-bold text-xl leading-tight uppercase">Open Box</span>
+                    <span class="text-xs font-semibold text-gray-400 tracking-[0.2em] uppercase">Devices</span>
+                </div>
             </div>
             
-            <div class="hidden md:flex space-x-8 font-semibold text-gray-700">
+            <div class="hidden md:flex space-x-10 font-bold text-sm uppercase tracking-widest">
                 <a onclick="showPage('home')" class="nav-link">Home</a>
                 <a onclick="showPage('products')" class="nav-link">Products</a>
-                <a onclick="showPage('inquiry')" class="nav-link">Inquiry</a>
-                <a onclick="showPage('contact')" class="nav-link">Contact Us</a>
+                <a onclick="showPage('inquiry')" class="nav-link border-b-2 border-yellow-500">Request Quote</a>
+                <a onclick="showPage('contact')" class="nav-link">Contact</a>
             </div>
 
             <div class="md:hidden">
-                <button onclick="toggleDropdown()" class="text-gray-700 focus:outline-none">
+                <button onclick="toggleDropdown()" class="text-[#0a2540] focus:outline-none">
                     <i class="fa fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
 
-        <div id="mobile-dropdown" class="hidden bg-white border-t border-gray-100 flex flex-col p-4 space-y-4 font-semibold md:hidden">
-            <a onclick="showPage('home'); toggleDropdown()" class="nav-link border-b pb-2">Home</a>
-            <a onclick="showPage('products'); toggleDropdown()" class="nav-link border-b pb-2">Products</a>
-            <a onclick="showPage('inquiry'); toggleDropdown()" class="nav-link border-b pb-2">Inquiry</a>
+        <div id="mobile-dropdown" class="hidden bg-white border-t border-gray-100 flex flex-col p-6 space-y-6 font-bold uppercase text-sm md:hidden">
+            <a onclick="showPage('home'); toggleDropdown()" class="nav-link">Home</a>
+            <a onclick="showPage('products'); toggleDropdown()" class="nav-link">Products</a>
+            <a onclick="showPage('inquiry'); toggleDropdown()" class="nav-link">Inquiry</a>
             <a onclick="showPage('contact'); toggleDropdown()" class="nav-link">Contact Us</a>
         </div>
     </nav>
 
     <section id="home" class="page-content">
-        <div class="bg-slate-900 text-white py-24 px-6 text-center">
-            <h1 class="text-5xl font-bold mb-4">Wholesale Smart Home Solutions</h1>
-            <p class="text-xl mb-8 opacity-90">Premium Open Box & New Devices for Professional Installers.</p>
-            <button onclick="showPage('products')" class="bg-yellow-500 text-slate-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-400 transition">View 2026 Inventory</button>
-        </div>
-        <div class="container mx-auto py-16 px-6 grid md:grid-cols-3 gap-8 text-center">
-            <div class="p-8 bg-white rounded-xl shadow border-t-4 border-yellow-500">
-                <i class="fa fa-boxes text-4xl text-yellow-500 mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">Bulk Inventory</h3>
-                <p class="text-gray-600">Direct sourcing of smart lighting, locks, and hubs at wholesale prices.</p>
-            </div>
-            <div class="p-8 bg-white rounded-xl shadow border-t-4 border-yellow-500">
-                <i class="fa fa-shipping-fast text-4xl text-yellow-500 mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">Fast Logistics</h3>
-                <p class="text-gray-600">24-hour quote turnaround and priority shipping for contractors.</p>
-            </div>
-            <div class="p-8 bg-white rounded-xl shadow border-t-4 border-yellow-500">
-                <i class="fa fa-tools text-4xl text-yellow-500 mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">Certified Testing</h3>
-                <p class="text-gray-600">Every open-box unit is bench-tested to ensure 100% functionality.</p>
+        <div class="relative bg-[#0a2540] text-white py-32 px-6">
+            <div class="container mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight">Wholesale Smart Home <br><span class="text-yellow-500">Inventory</span></h1>
+                <p class="text-xl mb-10 opacity-80 max-w-2xl mx-auto">Sourcing premium smart home tech for installers and developers at wholesale volume.</p>
+                <button onclick="showPage('products')" class="bg-yellow-500 text-[#0a2540] px-10 py-4 rounded font-black uppercase tracking-widest hover:bg-white transition shadow-xl">Browse Catalog</button>
             </div>
         </div>
-    </section>
-
-    <section id="products" class="page-content hidden py-16 container mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-12 text-center underline decoration-yellow-500 decoration-4">2026 Wholesale Inventory</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-xl shadow-lg border flex flex-col">
-                <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=500&q=80" class="h-48 w-full object-cover mb-4 rounded">
-                <h3 class="text-xl font-bold mb-2">Smart WiFi Door Lock</h3>
-                <p class="text-sm text-gray-600 mb-4">Biometric fingerprint access with physical key override. Remote management via app.</p>
-                <button onclick="addToQuote('Smart WiFi Door Lock')" class="mt-auto bg-slate-900 text-white py-2 rounded font-bold hover:bg-yellow-500 hover:text-slate-900 transition">Add to Quote</button>
+        
+        <div class="container mx-auto py-24 px-6 grid md:grid-cols-3 gap-12 text-center">
+            <div class="p-10 bg-white rounded-2xl shadow-lg border-b-4 border-yellow-500">
+                <i class="fa fa-layer-group text-5xl text-yellow-500 mb-6"></i>
+                <h3 class="text-2xl font-bold mb-4 uppercase">Bulk Sourcing</h3>
+                <p class="text-gray-500 leading-relaxed">Direct pipeline for smart lighting and security at high-volume wholesale rates.</p>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg border flex flex-col">
-                <img src="https://images.unsplash.com/photo-1558444479-c848512186b0?auto=format&fit=crop&w=500&q=80" class="h-48 w-full object-cover mb-4 rounded">
-                <h3 class="text-xl font-bold mb-2">Smart Wi-Fi Touch Switch</h3>
-                <p class="text-sm text-gray-600 mb-4">Tempered glass panels with LED backlighting. Voice control via Alexa and Google.</p>
-                <button onclick="addToQuote('Smart Wi-Fi Touch Switch')" class="mt-auto bg-slate-900 text-white py-2 rounded font-bold hover:bg-yellow-500 hover:text-slate-900 transition">Add to Quote</button>
+            <div class="p-10 bg-white rounded-2xl shadow-lg border-b-4 border-yellow-500">
+                <i class="fa fa-bolt text-5xl text-yellow-500 mb-6"></i>
+                <h3 class="text-2xl font-bold mb-4 uppercase">Fast Shipping</h3>
+                <p class="text-gray-600 leading-relaxed">Quotes processed in 24 hours with dedicated logistics for all project sizes.</p>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg border flex flex-col">
-                <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=500&q=80" class="h-48 w-full object-cover mb-4 rounded">
-                <h3 class="text-xl font-bold mb-2">Smart Fan Regulator</h3>
-                <p class="text-sm text-gray-600 mb-4">5-speed smart control for existing ceiling fans. Full scheduling through smartphone.</p>
-                <button onclick="addToQuote('Smart Fan Regulator')" class="mt-auto bg-slate-900 text-white py-2 rounded font-bold hover:bg-yellow-500 hover:text-slate-900 transition">Add to Quote</button>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg border flex flex-col">
-                <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=500&q=80" class="h-48 w-full object-cover mb-4 rounded">
-                <h3 class="text-xl font-bold mb-2">Smart 16A Power Plug</h3>
-                <p class="text-sm text-gray-600 mb-4">Energy monitoring for high-power appliances. Heavy-duty build for industrial use.</p>
-                <button onclick="addToQuote('Smart 16A Power Plug')" class="mt-auto bg-slate-900 text-white py-2 rounded font-bold hover:bg-yellow-500 hover:text-slate-900 transition">Add to Quote</button>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg border flex flex-col">
-                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=500&q=80" class="h-48 w-full object-cover mb-4 rounded">
-                <h3 class="text-xl font-bold mb-2">Smart Universal Remote</h3>
-                <p class="text-sm text-gray-600 mb-4">IR blaster to control TV, AC, and Media from one single mobile application.</p>
-                <button onclick="addToQuote('Smart Universal Remote')" class="mt-auto bg-slate-900 text-white py-2 rounded font-bold hover:bg-yellow-500 hover:text-slate-900 transition">Add to Quote</button>
+            <div class="p-10 bg-white rounded-2xl shadow-lg border-b-4 border-yellow-500">
+                <i class="fa fa-check-circle text-5xl text-yellow-500 mb-6"></i>
+                <h3 class="text-2xl font-bold mb-4 uppercase tracking-tight">Tested & Certified</h3>
+                <p class="text-gray-600 leading-relaxed">Every device is individually inspected and tested to ensure it works perfectly for your project.</p>
             </div>
         </div>
     </section>
 
-    <section id="inquiry" class="page-content hidden py-16 container mx-auto px-6 max-w-2xl">
-        <div class="bg-white p-8 rounded-xl shadow-xl border-t-8 border-yellow-500">
-            <h2 class="text-3xl font-bold mb-6 text-center">Wholesale Quote Request</h2>
-            <form action="https://formspree.io/f/[INSERT_YOUR_FORMSPREE_ID_HERE]" method="POST" class="space-y-4">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <input type="text" name="Name" placeholder="Your Name" required class="w-full p-3 border rounded">
-                    <input type="text" name="Business_Name" placeholder="Business Name" required class="w-full p-3 border rounded">
+    <section id="products" class="page-content hidden py-24 container mx-auto px-6">
+        <h2 class="text-4xl font-black mb-4 text-center uppercase tracking-tighter">Products</h2>
+        <p class="text-center text-gray-400 mb-16 uppercase tracking-[0.3em] text-xs font-bold font-sans">Build your wholesale quote request</p>
+        
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
+                <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80" class="h-64 w-full object-cover">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-3">Smart WiFi Door Lock</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Biometric fingerprint access with remote app management. Heavy-duty security for residential builds.</p>
+                    <button onclick="addToQuote('Smart WiFi Door Lock')" class="w-full bg-[#0a2540] text-white py-4 rounded font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-[#0a2540] transition">Add to Quote</button>
                 </div>
-                <input type="email" name="email" placeholder="Contact Email" required class="w-full p-3 border rounded">
-                <textarea id="quote-list-input" name="Product_List" placeholder="Added Products" rows="3" class="w-full p-3 border rounded bg-gray-100 font-bold" readonly></textarea>
-                <div class="grid md:grid-cols-2 gap-4">
-                    <input type="number" name="Quantity" placeholder="Quantity (Units)" class="w-full p-3 border rounded">
-                    <input type="text" name="Zip_Code" placeholder="Shipping Zip" class="w-full p-3 border rounded">
+            </div>
+            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
+                <img src="https://images.unsplash.com/photo-1558444479-c848512186b0?auto=format&fit=crop&w=800&q=80" class="h-64 w-full object-cover">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-3">Smart Wi-Fi Touch Switch</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Luxury tempered glass panels with voice control integration. Modernize any standard electrical box.</p>
+                    <button onclick="addToQuote('Smart Wi-Fi Touch Switch')" class="w-full bg-[#0a2540] text-white py-4 rounded font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-[#0a2540] transition">Add to Quote</button>
                 </div>
-                <select name="Timeline" class="w-full p-3 border rounded">
-                    <option value="" disabled selected>Timeline?</option>
-                    <option>ASAP</option>
-                    <option>1-2 Weeks</option>
-                    <option>Future Bulk Order</option>
-                </select>
-                <button type="submit" class="w-full bg-slate-900 text-white py-4 rounded-lg font-bold text-lg hover:bg-yellow-500 transition">Submit Request</button>
+            </div>
+            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
+                <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=800&q=80" class="h-64 w-full object-cover">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold mb-3">Smart Fan Regulator</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Precision fan speed control via smartphone. Energy-efficient retrofit for existing ceiling fans.</p>
+                    <button onclick="addToQuote('Smart Fan Regulator')" class="w-full bg-[#0a2540] text-white py-4 rounded font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-[#0a2540] transition">Add to Quote</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inquiry" class="page-content hidden py-24 container mx-auto px-6 max-w-3xl">
+        <div class="bg-white p-12 rounded-3xl shadow-2xl border-t-[12px] border-yellow-500 flex flex-col items-center">
+            <img src="logo.png" alt="OBD Logo" class="h-16 mb-6 opacity-30">
+            <h2 class="text-4xl font-black mb-8 text-center uppercase">Inquiry Form</h2>
+            <form action="https://formspree.io/f/[PASTE_YOUR_CODE_HERE]" method="POST" class="w-full space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" name="Name" placeholder="Full Name" required class="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-yellow-500">
+                    <input type="text" name="Business_Name" placeholder="Business Name" required class="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-yellow-500">
+                </div>
+                <input type="email" name="email" placeholder="Professional Email" required class="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-yellow-500">
+                <textarea id="quote-list-input" name="Product_List" placeholder="Select products from catalog" rows="3" class="w-full p-4 bg-gray-100 border-none rounded-xl font-bold text-[#0a2540]" readonly></textarea>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="number" name="Quantity" placeholder="Estimated Quantity" class="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-yellow-500">
+                    <input type="text" name="Zip_Code" placeholder="Shipping Zip" class="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-yellow-500">
+                </div>
+                <button type="submit" class="w-full bg-[#0a2540] text-white py-5 rounded-xl font-black uppercase tracking-widest hover:bg-yellow-500 hover:text-[#0a2540] transition">Submit Quote Request</button>
             </form>
         </div>
     </section>
 
-    <section id="contact" class="page-content hidden py-16 container mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold mb-12">Contact Details</h2>
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto text-slate-900">
-            <div class="bg-white p-10 rounded shadow-lg border-b-4 border-yellow-500">
-                <i class="fa fa-envelope text-4xl mb-4 text-yellow-500"></i>
-                <h3 class="text-xl font-bold">Email</h3>
-                <p>openboxdevices@gmail.com</p>
+    <section id="contact" class="page-content hidden py-24 container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-black mb-16 uppercase">Contact</h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <div class="bg-white p-16 rounded-3xl shadow-lg border-b-8 border-yellow-500">
+                <i class="fa fa-envelope text-5xl mb-6 text-yellow-500"></i>
+                <h3 class="text-2xl font-bold uppercase mb-2">Email</h3>
+                <p class="text-xl text-gray-500">openboxdevices@gmail.com</p>
             </div>
-            <div class="bg-white p-10 rounded shadow-lg border-b-4 border-yellow-500">
-                <i class="fa fa-phone text-4xl mb-4 text-yellow-500"></i>
-                <h3 class="text-xl font-bold">Phone</h3>
-                <p>484-995-1857</p>
+            <div class="bg-white p-16 rounded-3xl shadow-lg border-b-8 border-yellow-500">
+                <i class="fa fa-phone text-5xl mb-6 text-yellow-500"></i>
+                <h3 class="text-2xl font-bold uppercase mb-2">Phone</h3>
+                <p class="text-xl text-gray-500">484-995-1857</p>
             </div>
         </div>
     </section>
@@ -151,9 +152,10 @@
         <i class="fa fa-list-ul mr-2"></i> Quote List (<span id="cart-count">0</span>)
     </div>
 
-    <footer class="bg-slate-900 text-white py-12 mt-20 text-center">
-        <p class="font-bold text-lg mb-2 uppercase">Open Box Devices</p>
-        <p class="opacity-50 text-sm">&copy; 2026 Wholesale Smart Home Distribution</p>
+    <footer class="bg-[#0a2540] text-white py-20 text-center border-t border-gray-800">
+        <img src="logo.png" class="h-16 mx-auto mb-8 grayscale brightness-200 opacity-50">
+        <p class="font-black text-xl mb-2 uppercase tracking-widest">Open Box Devices</p>
+        <p class="opacity-40 text-xs uppercase tracking-[0.4em] font-bold">&copy; 2026 Wholesale Smart Home Distribution</p>
     </footer>
 
     <script>
@@ -162,6 +164,7 @@
         function showPage(pageId) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
             document.getElementById(pageId).classList.remove('hidden');
+            document.getElementById('mobile-dropdown').classList.add('hidden');
             window.scrollTo(0,0);
         }
 
@@ -175,7 +178,7 @@
                 quoteItems.push(productName);
                 updateQuoteUI();
             }
-            alert(productName + " added to your list.");
+            alert(productName + " added to quote list.");
         }
 
         function updateQuoteUI() {
