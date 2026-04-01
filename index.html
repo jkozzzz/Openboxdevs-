@@ -39,10 +39,17 @@
             </div>
 
             <div class="md:hidden">
-                <button onclick="toggleDropdown()" class="text-[#0a2540] focus:outline-none">
+                <button onclick="toggleDropdown()" class="text-[#0a2540] focus:outline-none p-2">
                     <i class="fa fa-bars text-2xl"></i>
                 </button>
             </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden bg-white border-t border-gray-100 flex flex-col p-6 space-y-6 font-bold uppercase text-sm md:hidden shadow-xl">
+            <a onclick="handleMobileNav('home')" class="nav-link">Home</a>
+            <a onclick="handleMobileNav('products')" class="nav-link">Products</a>
+            <a onclick="handleMobileNav('inquiry')" class="nav-link">Inquiry</a>
+            <a onclick="handleMobileNav('contact')" class="nav-link">Contact</a>
         </div>
     </nav>
 
@@ -120,8 +127,7 @@
     <div id="product-modal" class="fixed inset-0 z-[100] modal-bg hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl">
             <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-black text-2xl"><i class="fa fa-times"></i></button>
-            <div id="modal-content" class="p-8 md:p-12">
-                </div>
+            <div id="modal-content" class="p-8 md:p-12"></div>
         </div>
     </div>
 
@@ -145,6 +151,26 @@
         </div>
     </section>
 
+    <section id="contact" class="page-content hidden py-24 container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-black mb-16 uppercase">Contact</h2>
+        <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <div class="bg-white p-16 rounded-3xl shadow-lg border-b-8 border-yellow-500">
+                <i class="fa fa-envelope text-5xl mb-6 text-yellow-500"></i>
+                <h3 class="text-2xl font-bold uppercase mb-2">Email</h3>
+                <p class="text-xl text-gray-500">openboxdevices@gmail.com</p>
+            </div>
+            <div class="bg-white p-16 rounded-3xl shadow-lg border-b-8 border-yellow-500">
+                <i class="fa fa-phone text-5xl mb-6 text-yellow-500"></i>
+                <h3 class="text-2xl font-bold uppercase mb-2">Phone</h3>
+                <p class="text-xl text-gray-500">484-995-1857</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="quote-badge" class="quote-badge hidden" onclick="showPage('inquiry')">
+        <i class="fa fa-list-ul mr-2"></i> Quote List (<span id="cart-count">0</span>)
+    </div>
+
     <footer class="bg-[#0a2540] text-white py-20 text-center border-t border-gray-800">
         <img src="logo.png" alt="Logo" class="h-16 mx-auto mb-8 grayscale brightness-200 opacity-50">
         <p class="font-black text-xl mb-2 uppercase tracking-widest">Open Box Devices</p>
@@ -153,65 +179,35 @@
 
     <script>
         const productData = {
-            lock: {
-                title: "Smart WiFi Door Lock",
-                img: "lock.jpg",
-                desc: "A heavy-duty biometric solution designed for modern residential and commercial applications.",
-                specs: [
-                    "Unlocking Methods: Fingerprint, App, Passcode, RFID Card, Physical Key",
-                    "Connectivity: 2.4GHz WiFi (No Hub Required)",
-                    "Material: Zinc Alloy with Anti-Corrosion Coating",
-                    "Battery Life: 10-12 Months (4x AA Batteries)",
-                    "Door Compatibility: 35mm - 55mm thickness"
-                ]
-            },
-            switch: {
-                title: "Smart Wi-Fi Touch Switch",
-                img: "switch.jpg",
-                desc: "Premium tempered glass touch switches providing native smartphone and voice control over standard lighting circuits.",
-                specs: [
-                    "Voltage: 110V - 240V AC",
-                    "Max Load: 600W / Gang",
-                    "Panel: Waterproof, Scratch-Resistant Glass",
-                    "Compatibility: Alexa, Google Assistant, Tuya/SmartLife",
-                    "Installation: Standard US Junction Box"
-                ]
-            },
-            plug: {
-                title: "Smart 16A Power Plug",
-                img: "plug.jpg",
-                desc: "Industrial-grade smart plug featuring advanced energy monitoring for high-wattage appliance automation.",
-                specs: [
-                    "Rated Current: 16A Max",
-                    "Power Monitoring: Real-time Volts, Amps, and kWh tracking",
-                    "Safety: Flame-retardant PC shell + Overload Protection",
-                    "Features: Timer schedules, Countdown mode, Group control",
-                    "Standard: 3-Pin Grounded Plug"
-                ]
-            },
-            remote: {
-                title: "Smart Universal Remote",
-                img: "remote.jpg",
-                desc: "An all-in-one infrared control hub that turns any smartphone into a master remote for entertainment and climate systems.",
-                specs: [
-                    "IR Frequency: 38KHz",
-                    "Range: 360-degree coverage up to 8 meters",
-                    "Database: Supported 50,000+ IR controlled devices",
-                    "App: Real-time feedback and scene automation",
-                    "Power: DC 5V/1A (Micro USB)"
-                ]
-            }
+            lock: { title: "Smart WiFi Door Lock", img: "lock.jpg", desc: "A heavy-duty biometric solution designed for modern residential and commercial applications.", specs: ["Unlocking Methods: Fingerprint, App, Passcode, RFID Card, Physical Key", "Connectivity: 2.4GHz WiFi (No Hub Required)", "Material: Zinc Alloy with Anti-Corrosion Coating", "Battery Life: 10-12 Months (4x AA Batteries)", "Door Compatibility: 35mm - 55mm thickness"] },
+            switch: { title: "Smart Wi-Fi Touch Switch", img: "switch.jpg", desc: "Premium tempered glass touch switches providing native smartphone and voice control over standard lighting circuits.", specs: ["Voltage: 110V - 240V AC", "Max Load: 600W / Gang", "Panel: Waterproof, Scratch-Resistant Glass", "Compatibility: Alexa, Google Assistant, Tuya/SmartLife", "Installation: Standard US Junction Box"] },
+            plug: { title: "Smart 16A Power Plug", img: "plug.jpg", desc: "Industrial-grade smart plug featuring advanced energy monitoring for high-wattage appliance automation.", specs: ["Rated Current: 16A Max", "Power Monitoring: Real-time Volts, Amps, and kWh tracking", "Safety: Flame-retardant PC shell + Overload Protection", "Features: Timer schedules, Countdown mode, Group control", "Standard: 3-Pin Grounded Plug"] },
+            remote: { title: "Smart Universal Remote", img: "remote.jpg", desc: "An all-in-one infrared control hub that turns any smartphone into a master remote for entertainment and climate systems.", specs: ["IR Frequency: 38KHz", "Range: 360-degree coverage up to 8 meters", "Database: Supported 50,000+ IR controlled devices", "App: Real-time feedback and scene automation", "Power: DC 5V/1A (Micro USB)"] }
         };
 
         let quoteItems = [];
+
+        function toggleDropdown() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function handleMobileNav(pageId) {
+            showPage(pageId);
+            toggleDropdown(); // Closes menu after clicking
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
 
         function openModal(key) {
             const data = productData[key];
             const content = `
                 <div class="grid md:grid-cols-2 gap-10">
-                    <div>
-                        <img src="${data.img}" class="rounded-2xl w-full shadow-lg">
-                    </div>
+                    <div><img src="${data.img}" class="rounded-2xl w-full shadow-lg"></div>
                     <div>
                         <h2 class="text-3xl font-black mb-4 uppercase tracking-tighter">${data.title}</h2>
                         <p class="text-gray-500 mb-6 leading-relaxed">${data.desc}</p>
@@ -229,12 +225,6 @@
 
         function closeModal() {
             document.getElementById('product-modal').classList.add('hidden');
-        }
-
-        function showPage(pageId) {
-            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
-            document.getElementById(pageId).classList.remove('hidden');
-            window.scrollTo(0,0);
         }
 
         function addToQuote(productName) {
