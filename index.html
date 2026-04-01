@@ -12,8 +12,9 @@
         .hidden { display: none; }
         .nav-link { cursor: pointer; transition: all 0.3s; }
         .nav-link:hover { color: var(--accent); }
-        .product-card img { transition: transform 0.5s ease; }
-        .product-card:hover img { transform: scale(1.03); }
+        .product-card { cursor: pointer; transition: transform 0.3s ease; }
+        .product-card:hover { transform: translateY(-5px); }
+        .modal-bg { background: rgba(10, 37, 64, 0.95); backdrop-filter: blur(5px); }
         .page-content { animation: fadeIn 0.4s ease-in; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
@@ -42,13 +43,6 @@
                     <i class="fa fa-bars text-2xl"></i>
                 </button>
             </div>
-        </div>
-
-        <div id="mobile-dropdown" class="hidden bg-white border-t border-gray-100 flex flex-col p-6 space-y-6 font-bold uppercase text-sm md:hidden">
-            <a onclick="showPage('home'); toggleDropdown()" class="nav-link">Home</a>
-            <a onclick="showPage('products'); toggleDropdown()" class="nav-link">Products</a>
-            <a onclick="showPage('inquiry'); toggleDropdown()" class="nav-link">Inquiry</a>
-            <a onclick="showPage('contact'); toggleDropdown()" class="nav-link">Contact Us</a>
         </div>
     </nav>
 
@@ -82,55 +76,58 @@
 
     <section id="products" class="page-content hidden py-24 container mx-auto px-6">
         <h2 class="text-4xl font-black mb-4 text-center uppercase tracking-tighter">Products</h2>
-        <p class="text-center text-gray-400 mb-16 uppercase tracking-[0.3em] text-xs font-bold font-sans">Build your wholesale quote request</p>
+        <p class="text-center text-gray-400 mb-16 uppercase tracking-[0.3em] text-xs font-bold font-sans">Click on any product for technical details</p>
         
-        <div class="grid md:grid-cols-3 gap-10">
-            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
-                <img src="lock.jpg" alt="Upload lock.jpg" class="h-64 w-full object-cover">
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold mb-3">Smart WiFi Door Lock</h3>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Biometric fingerprint access with remote app management. Heavy-duty security for residential builds.</p>
-                    <button onclick="addToQuote('Smart WiFi Door Lock')" class="w-full bg-[#0a2540] text-white py-4 rounded font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-[#0a2540] transition">Add to Quote</button>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" onclick="openModal('lock')">
+                <img src="lock.jpg" alt="Smart WiFi Door Lock" class="h-56 w-full object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Smart WiFi Door Lock</h3>
+                    <p class="text-gray-500 text-sm mb-4">Biometric fingerprint access with remote app management.</p>
+                    <span class="text-yellow-600 font-bold text-xs uppercase tracking-widest">Click for Specs</span>
                 </div>
             </div>
-            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
-                <img src="switch.jpg" alt="Upload switch.jpg" class="h-64 w-full object-cover">
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold mb-3">Smart Wi-Fi Touch Switch</h3>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Luxury tempered glass panels with voice control integration. Modernize any standard electrical box.</p>
-                    <button onclick="addToQuote('Smart Wi-Fi Touch Switch')" class="w-full bg-[#0a2540] text-white py-4 rounded font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-[#0a2540] transition">Add to Quote</button>
+
+            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" onclick="openModal('switch')">
+                <img src="switch.jpg" alt="Smart WiFi Switch" class="h-56 w-full object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Smart Wi-Fi Switch</h3>
+                    <p class="text-gray-500 text-sm mb-4">Luxury tempered glass panels with voice control integration.</p>
+                    <span class="text-yellow-600 font-bold text-xs uppercase tracking-widest">Click for Specs</span>
                 </div>
             </div>
-            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
-                <img src="fan.jpg" alt="Upload fan.jpg" class="h-64 w-full object-cover">
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold mb-3">Smart Fan Regulator</h3>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Precision fan speed control via smartphone. Energy-efficient retrofit for existing ceiling fans.</p>
-                    <button onclick="addToQuote('Smart Fan Regulator')" class="w-full bg-[#0a2540] text-white py-4 rounded font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-[#0a2540] transition">Add to Quote</button>
+
+            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" onclick="openModal('plug')">
+                <img src="plug.jpg" alt="Smart Power Plug" class="h-56 w-full object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Smart 16A Power Plug</h3>
+                    <p class="text-gray-500 text-sm mb-4">Real-time energy monitoring for high-power appliances.</p>
+                    <span class="text-yellow-600 font-bold text-xs uppercase tracking-widest">Click for Specs</span>
                 </div>
             </div>
-            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
-                <img src="plug.jpg" alt="Upload plug.jpg" class="h-64 w-full object-cover">
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold mb-3">Smart 16A Power Plug</h3>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">Energy monitoring for high-power appliances. Heavy-duty build for industrial use.</p>
-                    <button onclick="addToQuote('Smart 16A Power Plug')" class="w-full bg-[#0a2540] text-white py-4 rounded font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-[#0a2540] transition">Add to Quote</button>
-                </div>
-            </div>
-            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
-                <img src="remote.jpg" alt="Upload remote.jpg" class="h-64 w-full object-cover">
-                <div class="p-8">
-                    <h3 class="text-2xl font-bold mb-3">Smart Universal Remote</h3>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed">IR blaster to control TV, AC, and Media from one single mobile application.</p>
-                    <button onclick="addToQuote('Smart Universal Remote')" class="w-full bg-[#0a2540] text-white py-4 rounded font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-[#0a2540] transition">Add to Quote</button>
+
+            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" onclick="openModal('remote')">
+                <img src="remote.jpg" alt="Smart Hub" class="h-56 w-full object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Smart Universal Remote</h3>
+                    <p class="text-gray-500 text-sm mb-4">Universal IR control hub for home entertainment systems.</p>
+                    <span class="text-yellow-600 font-bold text-xs uppercase tracking-widest">Click for Specs</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <div id="product-modal" class="fixed inset-0 z-[100] modal-bg hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-black text-2xl"><i class="fa fa-times"></i></button>
+            <div id="modal-content" class="p-8 md:p-12">
+                </div>
+        </div>
+    </div>
+
     <section id="inquiry" class="page-content hidden py-24 container mx-auto px-6 max-w-3xl">
         <div class="bg-white p-12 rounded-3xl shadow-2xl border-t-[12px] border-yellow-500 flex flex-col items-center">
-            <img src="logo.png" alt="Logo" class="h-20 mb-8 opacity-20">
+            <img src="logo.png" alt="Logo" class="h-16 mb-6 opacity-30">
             <h2 class="text-4xl font-black mb-8 text-center uppercase">Inquiry Form</h2>
             <form action="https://formspree.io/f/[PASTE_YOUR_CODE_HERE]" method="POST" class="w-full space-y-6">
                 <div class="grid md:grid-cols-2 gap-6">
@@ -138,35 +135,15 @@
                     <input type="text" name="Business_Name" placeholder="Business Name" required class="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-yellow-500">
                 </div>
                 <input type="email" name="email" placeholder="Professional Email" required class="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-yellow-500">
-                <textarea id="quote-list-input" name="Product_List" placeholder="Select products from catalog" rows="3" class="w-full p-4 bg-gray-100 border-none rounded-xl font-bold text-[#0a2540]" readonly></textarea>
+                <textarea id="quote-list-input" name="Product_List" placeholder="Items selected will appear here" rows="3" class="w-full p-4 bg-gray-100 border-none rounded-xl font-bold text-[#0a2540]" readonly></textarea>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <input type="number" name="Quantity" placeholder="Estimated Quantity" class="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-yellow-500">
-                    <input type="text" name="Zip_Code" placeholder="Shipping Zip" class="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-yellow-500">
+                    <input type="number" name="Quantity" placeholder="Estimated Total Quantity" class="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-yellow-500">
+                    <input type="text" name="Zip_Code" placeholder="Shipping Zip Code" class="w-full p-4 bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-yellow-500">
                 </div>
                 <button type="submit" class="w-full bg-[#0a2540] text-white py-5 rounded-xl font-black uppercase tracking-widest hover:bg-yellow-500 hover:text-[#0a2540] transition">Submit Quote Request</button>
             </form>
         </div>
     </section>
-
-    <section id="contact" class="page-content hidden py-24 container mx-auto px-6 text-center">
-        <h2 class="text-4xl font-black mb-16 uppercase">Contact</h2>
-        <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            <div class="bg-white p-16 rounded-3xl shadow-lg border-b-8 border-yellow-500">
-                <i class="fa fa-envelope text-5xl mb-6 text-yellow-500"></i>
-                <h3 class="text-2xl font-bold uppercase mb-2">Email</h3>
-                <p class="text-xl text-gray-500">openboxdevices@gmail.com</p>
-            </div>
-            <div class="bg-white p-16 rounded-3xl shadow-lg border-b-8 border-yellow-500">
-                <i class="fa fa-phone text-5xl mb-6 text-yellow-500"></i>
-                <h3 class="text-2xl font-bold uppercase mb-2">Phone</h3>
-                <p class="text-xl text-gray-500">484-995-1857</p>
-            </div>
-        </div>
-    </section>
-
-    <div id="quote-badge" class="quote-badge hidden" onclick="showPage('inquiry')">
-        <i class="fa fa-list-ul mr-2"></i> Quote List (<span id="cart-count">0</span>)
-    </div>
 
     <footer class="bg-[#0a2540] text-white py-20 text-center border-t border-gray-800">
         <img src="logo.png" alt="Logo" class="h-16 mx-auto mb-8 grayscale brightness-200 opacity-50">
@@ -175,37 +152,100 @@
     </footer>
 
     <script>
+        const productData = {
+            lock: {
+                title: "Smart WiFi Door Lock",
+                img: "lock.jpg",
+                desc: "A heavy-duty biometric solution designed for modern residential and commercial applications.",
+                specs: [
+                    "Unlocking Methods: Fingerprint, App, Passcode, RFID Card, Physical Key",
+                    "Connectivity: 2.4GHz WiFi (No Hub Required)",
+                    "Material: Zinc Alloy with Anti-Corrosion Coating",
+                    "Battery Life: 10-12 Months (4x AA Batteries)",
+                    "Door Compatibility: 35mm - 55mm thickness"
+                ]
+            },
+            switch: {
+                title: "Smart Wi-Fi Touch Switch",
+                img: "switch.jpg",
+                desc: "Premium tempered glass touch switches providing native smartphone and voice control over standard lighting circuits.",
+                specs: [
+                    "Voltage: 110V - 240V AC",
+                    "Max Load: 600W / Gang",
+                    "Panel: Waterproof, Scratch-Resistant Glass",
+                    "Compatibility: Alexa, Google Assistant, Tuya/SmartLife",
+                    "Installation: Standard US Junction Box"
+                ]
+            },
+            plug: {
+                title: "Smart 16A Power Plug",
+                img: "plug.jpg",
+                desc: "Industrial-grade smart plug featuring advanced energy monitoring for high-wattage appliance automation.",
+                specs: [
+                    "Rated Current: 16A Max",
+                    "Power Monitoring: Real-time Volts, Amps, and kWh tracking",
+                    "Safety: Flame-retardant PC shell + Overload Protection",
+                    "Features: Timer schedules, Countdown mode, Group control",
+                    "Standard: 3-Pin Grounded Plug"
+                ]
+            },
+            remote: {
+                title: "Smart Universal Remote",
+                img: "remote.jpg",
+                desc: "An all-in-one infrared control hub that turns any smartphone into a master remote for entertainment and climate systems.",
+                specs: [
+                    "IR Frequency: 38KHz",
+                    "Range: 360-degree coverage up to 8 meters",
+                    "Database: Supported 50,000+ IR controlled devices",
+                    "App: Real-time feedback and scene automation",
+                    "Power: DC 5V/1A (Micro USB)"
+                ]
+            }
+        };
+
         let quoteItems = [];
+
+        function openModal(key) {
+            const data = productData[key];
+            const content = `
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div>
+                        <img src="${data.img}" class="rounded-2xl w-full shadow-lg">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-black mb-4 uppercase tracking-tighter">${data.title}</h2>
+                        <p class="text-gray-500 mb-6 leading-relaxed">${data.desc}</p>
+                        <h4 class="font-bold text-sm uppercase tracking-widest text-yellow-600 mb-4">Technical Specifications</h4>
+                        <ul class="space-y-2 mb-8">
+                            ${data.specs.map(s => `<li class="text-sm flex items-start"><i class="fa fa-check text-yellow-500 mt-1 mr-3"></i> ${s}</li>`).join('')}
+                        </ul>
+                        <button onclick="addToQuote('${data.title}'); closeModal()" class="w-full bg-[#0a2540] text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-yellow-500 hover:text-[#0a2540] transition">Add to Wholesale Quote</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modal-content').innerHTML = content;
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
 
         function showPage(pageId) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
             document.getElementById(pageId).classList.remove('hidden');
-            document.getElementById('mobile-dropdown').classList.add('hidden');
             window.scrollTo(0,0);
-        }
-
-        function toggleDropdown() {
-            const menu = document.getElementById('mobile-dropdown');
-            menu.classList.toggle('hidden');
         }
 
         function addToQuote(productName) {
             if(!quoteItems.includes(productName)) {
                 quoteItems.push(productName);
-                updateQuoteUI();
-            }
-            alert(productName + " added to quote list.");
-        }
-
-        function updateQuoteUI() {
-            const badge = document.getElementById('quote-badge');
-            const count = document.getElementById('cart-count');
-            const input = document.getElementById('quote-list-input');
-            if(quoteItems.length > 0) {
+                const badge = document.getElementById('quote-badge');
                 badge.classList.remove('hidden');
-                count.innerText = quoteItems.length;
-                input.value = "Selected: " + quoteItems.join(", ");
+                document.getElementById('cart-count').innerText = quoteItems.length;
+                document.getElementById('quote-list-input').value = "Inquiry for: " + quoteItems.join(", ");
             }
+            alert(productName + " added to your wholesale list.");
         }
     </script>
 </body>
