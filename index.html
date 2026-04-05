@@ -82,42 +82,15 @@
     </section>
 
     <section id="products" class="page-content hidden py-24 container mx-auto px-6">
-        <h2 class="text-4xl font-black mb-4 text-center uppercase tracking-tighter">Products</h2>
-        <p class="text-center text-gray-400 mb-16 uppercase tracking-[0.3em] text-xs font-bold font-sans">Click on any product for technical details</p>
+        <h2 class="text-4xl font-black mb-4 text-center uppercase tracking-tighter">Featured Product</h2>
+        <p class="text-center text-gray-400 mb-16 uppercase tracking-[0.3em] text-xs font-bold font-sans">Click for technical details</p>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" onclick="openModal('lock')">
-                <img src="lock.jpg" alt="Smart WiFi Door Lock" class="h-56 w-full object-cover">
+        <div class="flex justify-center">
+            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col max-w-sm" onclick="openModal('lock')">
+                <img src="lock.jpg" alt="Smart WiFi Door Lock" class="h-64 w-full object-cover">
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2">Smart WiFi Door Lock</h3>
                     <p class="text-gray-500 text-sm mb-4">Biometric fingerprint access with remote app management.</p>
-                    <span class="text-yellow-600 font-bold text-xs uppercase tracking-widest">Click for Specs</span>
-                </div>
-            </div>
-
-            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" onclick="openModal('switch')">
-                <img src="switch.jpg" alt="Smart WiFi Switch" class="h-56 w-full object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">Smart Wi-Fi Switch</h3>
-                    <p class="text-gray-500 text-sm mb-4">Luxury tempered glass panels with voice control integration.</p>
-                    <span class="text-yellow-600 font-bold text-xs uppercase tracking-widest">Click for Specs</span>
-                </div>
-            </div>
-
-            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" onclick="openModal('plug')">
-                <img src="plug.jpg" alt="Smart Power Plug" class="h-56 w-full object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">Smart 16A Power Plug</h3>
-                    <p class="text-gray-500 text-sm mb-4">Real-time energy monitoring for high-power appliances.</p>
-                    <span class="text-yellow-600 font-bold text-xs uppercase tracking-widest">Click for Specs</span>
-                </div>
-            </div>
-
-            <div class="product-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col" onclick="openModal('remote')">
-                <img src="remote.jpg" alt="Smart Hub" class="h-56 w-full object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2">Smart Universal Remote</h3>
-                    <p class="text-gray-500 text-sm mb-4">Universal IR control hub for home entertainment systems.</p>
                     <span class="text-yellow-600 font-bold text-xs uppercase tracking-widest">Click for Specs</span>
                 </div>
             </div>
@@ -179,10 +152,7 @@
 
     <script>
         const productData = {
-            lock: { title: "Smart WiFi Door Lock", img: "lock.jpg", desc: "A heavy-duty biometric solution designed for modern residential and commercial applications.", specs: ["Unlocking Methods: Fingerprint, App, Passcode, RFID Card, Physical Key", "Connectivity: 2.4GHz WiFi (No Hub Required)", "Material: Zinc Alloy with Anti-Corrosion Coating", "Battery Life: 10-12 Months (4x AA Batteries)", "Door Compatibility: 35mm - 55mm thickness"] },
-            switch: { title: "Smart Wi-Fi Touch Switch", img: "switch.jpg", desc: "Premium tempered glass touch switches providing native smartphone and voice control over standard lighting circuits.", specs: ["Voltage: 110V - 240V AC", "Max Load: 600W / Gang", "Panel: Waterproof, Scratch-Resistant Glass", "Compatibility: Alexa, Google Assistant, Tuya/SmartLife", "Installation: Standard US Junction Box"] },
-            plug: { title: "Smart 16A Power Plug", img: "plug.jpg", desc: "Industrial-grade smart plug featuring advanced energy monitoring for high-wattage appliance automation.", specs: ["Rated Current: 16A Max", "Power Monitoring: Real-time Volts, Amps, and kWh tracking", "Safety: Flame-retardant PC shell + Overload Protection", "Features: Timer schedules, Countdown mode, Group control", "Standard: 3-Pin Grounded Plug"] },
-            remote: { title: "Smart Universal Remote", img: "remote.jpg", desc: "An all-in-one infrared control hub that turns any smartphone into a master remote for entertainment and climate systems.", specs: ["IR Frequency: 38KHz", "Range: 360-degree coverage up to 8 meters", "Database: Supported 50,000+ IR controlled devices", "App: Real-time feedback and scene automation", "Power: DC 5V/1A (Micro USB)"] }
+            lock: { title: "Smart WiFi Door Lock", img: "lock.jpg", desc: "A heavy-duty biometric solution designed for modern residential and commercial applications.", specs: ["Unlocking Methods: Fingerprint, App, Passcode, RFID Card, Physical Key", "Connectivity: 2.4GHz WiFi (No Hub Required)", "Material: Zinc Alloy with Anti-Corrosion Coating", "Battery Life: 10-12 Months (4x AA Batteries)", "Door Compatibility: 35mm - 55mm thickness"] }
         };
 
         let quoteItems = [];
@@ -194,7 +164,7 @@
 
         function handleMobileNav(pageId) {
             showPage(pageId);
-            toggleDropdown(); // Closes menu after clicking
+            toggleDropdown();
         }
 
         function showPage(pageId) {
@@ -240,3 +210,4 @@
     </script>
 </body>
 </html>
+
